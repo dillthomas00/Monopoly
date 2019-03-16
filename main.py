@@ -27,7 +27,7 @@ class app():
         self.background = pygame.Surface(self.screen.get_size())
         self.background = self.background.convert()
         self.background.fill((255,255,255))
-        self.background.blit(grid, (385, 50)) #(1920 - 1150) / 2
+        self.background.blit(grid, (385, 25)) #(1920 - 1150) / 2
         
         #back_button  = pygame.image.load(".//Assets//back_button.png")
         #pygame.transform.scale(back_button, (400, 100))
@@ -83,7 +83,7 @@ class app():
             self.screen.blit(self.background, (0, 0))
             self.screen.blit(dice_1, (x1, y1))
             self.screen.blit(dice_2, (x2, y2))
-            self.screen.blit
+
             pygame.display.update()
             counter = counter + 1
 
