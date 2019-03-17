@@ -11,7 +11,50 @@ fpsControl = pygame.time.Clock()
 
 pygame.font.init() 
 font = pygame.font.SysFont('Comic Sans MS', 24)
-
+#5 house means a hotel
+#https://monopoly.fandom.com/wiki/Houses
+#http://www.jdawiseman.com/papers/trivia/monopoly-rents.html
+properties = {0: {'name': 'go'},
+                      1: {'name': "old kent road", "owned": False, 'owner': '', "price": 60, "colour": "brown", "houses": 5, "house price": 50, },
+                      2: {'name': "community"},
+                      3: {'name': "whitechapel road", "owned": False, 'owner': ''},
+                      4: {'name': "income tax"},
+                      5: {'name': "kings cross station", "owned": False, 'owner': ''},
+                      6: {'name': "the angel islington", "owned": False, 'owner': ''},
+                      7: {'name': "chance"},
+                      8: {'name': "euston road", "owned": False, 'owner': ''},
+                      9: {'name': "pentonville road", "owned": False, 'owner': ''},
+                      10: {'name': "visiting jail"},
+                      11: {'name': "pall mall", "owned": False, 'owner': ''},
+                      12: {'name': "electric company", "owned": False, 'owner': ''},
+                      13: {'name': "whitehall", "owned": False, 'owner': ''},
+                      14: {'name': "northumrl'd avenue", "owned": False, 'owner': ''},
+                      15: {'name': "marylebone station", "owned": False, 'owner': ''},
+                      16: {'name': "bow street", "owned": False, 'owner': ''},
+                      17: {'name': "community"},
+                      18: {'name': "marlborough", "owned": False, 'owner': ''},
+                      19: {'name': "vine street", "owned": False, 'owner': ''},
+                      20: {'name': "free parking"},
+                      21: {'name': "strand", "owned": False, 'owner': ''},
+                      22: {'name': "chance"},
+                      23: {'name': "fleet street", "owned": False, 'owner': ''},
+                      24: {'name': "trafalgar square", "owned": False, 'owner': ''},
+                      25: {'name': "fenchurch street", "owned": False, 'owner': ''},
+                      26: {'name': "leicester square", "owned": False, 'owner': ''},
+                      27: {'name': "coventry street", "owned": False, 'owner': ''},
+                      28: {'name': "water works", "owned": False, 'owner': ''},
+                      29: {'name': "piccadilly", "owned": False, 'owner': ''},
+                      30: {'name': "goto jail'},
+                      31: {'name': "regent street", "owned": False, 'owner': ''},
+                      32: {'name': "oxford street", "owned": False, 'owner': ''},
+                      33: {'name': "community"},
+                      34: {'name': "bond steet", "owned": False, 'owner': ''},
+                      35: {'name': "liverpool st station", "owned": False, 'owner': ''},
+                      36: {'name': "chance"},
+                      37: {'name': "park lane", "owned": False, 'owner': ''},
+                      38: {'name': "super tax"},
+                      39: {'name': "mayfair", "owned": False, 'owner': ''}
+		  }
 
 # Image Asset
 player_counter = pygame.transform.scale(pygame.image.load(".//Assets//player_counter.png"), (30, 25))
@@ -63,7 +106,7 @@ class app():
                     if event.button == 1:  # Left mouse button.
                         print (event.pos)
                         #self.dice_roll(0) ### Done for now
-                        self.card_animation(0,0, "community_card")
+                        self.card_animation(575, 185, "community_card")
                         self.card_animation(0,0, "chance_card")
                         
             pygame.display.flip()
@@ -110,12 +153,11 @@ class app():
             
 
     def card_animation(self, starter_x, starter_y, card):
-        starter_x, starter_y = 575, 185
         displacement_x, displacement_y = (1150 - starter_x) / 50,  (740 - starter_y) / 50
         x, y = starter_x, starter_y
         counter = 0
-        while counter != 22: #need a for loop to blit all player positions after background blit
-            card_pic = pygame.transform.scale(pygame.image.load(".//Assets//" + card.title() + "//" + str(int(23-counter)) + ".png"), (265, 240))
+        while counter != 23: #need a for loop to blit all player positions after background blit
+            card_pic = pygame.transform.scale(pygame.image.load(".//Assets//" + card.title() + "//" + str(int(22-counter)) + ".png"), (265, 240))
             self.screen.blit(self.background, (0, 0))
             self.screen.blit(card_pic, (x, y))
             pygame.display.update()
@@ -137,7 +179,7 @@ class app():
         chosen_text = possible_texts[chosen_index]
         counter = 0
         splits = 0
-        chosen_text_rewritten = [[], []]
+        chosen_text_rewritten = [[], [], []]
         print (chosen_text)
         for char in chosen_text:
             if counter > 15:
